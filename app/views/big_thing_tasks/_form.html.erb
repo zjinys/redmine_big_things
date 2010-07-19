@@ -1,0 +1,49 @@
+<table>
+  <tr>
+    <td>
+        <%= l(:field_big_thing_task_title) %>
+    </td>
+    <td>
+        <%= f.text_field 'name',:size=>60 %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <%= l(:field_big_thing_task_start_date) %>
+    </td>
+    <td>
+        <%= f.date_select 'start_date' %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <%= l(:field_big_thing_task_finish_date) %>
+    </td>
+    <td>
+        <%= f.date_select 'finish_date' %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        <%= l(:field_big_thing_task_description) %>
+    </td>
+    <td>
+        <%= f.text_area 'description', :rows => 10,:cols=>80 %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= l(:field_big_thing_task_responser) %>
+    </td>
+    <td>
+      <%= f.select "responer",options_from_collection_for_select(@members,'id','name') %>  
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2">
+        <%= hidden_field_tag 'id',@big_thing.id %>
+        <%= submit_tag l(:button_add) %>    
+    </td>
+  </tr>
+    
+</table>

@@ -1,1 +1,65 @@
-<h2>BigThings#show</h2>
+<div class="contextual">
+<%= link_to l(:button_start), {:controller => 'big_things', :action => 'change', :status=>20,:id => @big_thing,:project_id => @project.id}, :confirm => l(:text_are_you_sure), :method => :post%> |
+<%= link_to l(:button_finish), {:controller => 'big_things', :action => 'change',:status=>50, :id => @big_thing,:project_id => @project.id}, :confirm => l(:text_are_you_sure), :method => :post%>
+</div>
+<h2><%= @big_thing.name %></h2>
+
+<%= l(:field_create_by) %> : <%= @big_thing.author %>(<%= format_date(@big_thing.created_at) %> ) <br/><br/>
+<h3><%= l(:field_description) %></h3>
+<p><% unless @big_thing.description.blank? %><em><%=h @big_thing.description %></em><br /><% end %>
+
+<div>
+    <div class="contextual">
+        <%= toggle_link l(:button_add), 'new-relation-form'%>
+    </div>
+    <h3><%= l(:field_tasks) %></h3>
+    <% remote_form_for(:big_thing_tasks, @big_thing_task,
+                 :url => {:controller => 'big_thing_tasks', :action => 'new', :big_thing => @big_thing},
+                 :method => :post,
+                 :html => {:id => 'new-relation-form', :style => (@relation ? '' : 'display: none;')}) do |f| %>
+        <%= render :partial => 'big_thing_tasks/form', :locals => {:f => f}  %>
+    <% end %>
+
+</div>
+
+<div>
+  <table class="list files">
+     <thead>
+         <tr>
+           <th></th>
+           <th><%=  l(:label_task_name) %></th>
+           <th><%=  l(:label_task_responser) %></th>
+           <th><%=  l(:label_task_start_date) %></th>
+           <th><%=  l(:label_task_finish_date) %></th>
+           <th><%=  l(:label_task_status) %></th>
+         </tr>
+     </thead>
+    <tbody>
+        <% @tasks.each do |task| %>
+            <tr class="file <%= cycle("odd", "even") %>">
+              <td>
+                <%  if can_edit(task) %>
+                <%= check_box_tag 'task' %>
+                <% end %>
+              </td>
+              <td>
+                <%= task.name %>
+              </td>
+              <td>
+                <%= task.responser %>
+              </td>
+              <td>
+                <%= format_date(task.start_date) %>
+              </td>
+              <td>
+                <%= format_date(task.finish_date) %>
+              </td>
+              <td>
+                <%= task_status(task.status) %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+       </table>
+
+</div>

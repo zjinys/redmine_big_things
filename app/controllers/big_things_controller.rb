@@ -21,6 +21,10 @@ class BigThingsController < ApplicationController
   end
 
   def show
+    @big_thing = BigThing.find_by_id(params[:id])
+    @members = @project.assignable_users
+    @big_thing_task_pages, @tasks = paginate :big_thing_task,:per_page => 10,:conditions=>['big_thing_id=?',params[:id]]
+    render :action => "show",:id =>params[:id] ,:project_id => @project.id, :layout => false if request.xhr?
   end
 
   private

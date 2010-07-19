@@ -9,3 +9,15 @@ en:
   field_big_thing_created_at: Create at
   field_big_thing_title: Name
   field_big_thing_description: Description
+  label_task_name: Name
+  label_task_responser: Responer
+  label_task_start_date: Start date
+  label_task_finish_date: Finish date
+  button_add: Add
+  field_tasks: Tasks
+  field_big_thing_task_title: Name
+  field_big_thing_task_start_date: Start date
+  field_big_thing_task_finish_date: Finish date
+  field_big_thing_task_description: Description
+  field_big_thing_task_responser: Responser
+  label_task_status: Status
