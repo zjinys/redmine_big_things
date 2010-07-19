@@ -1,3 +1,11 @@
 # English strings go here for Rails i18n
 en:
   my_label: "My label"
+  label_big_things_list: Big things
+  label_big_thing_new: New
+  field_big_thing_name: Name
+  field_big_thing_start_date: Start date
+  field_big_thing_finish_date: Finish date
+  field_big_thing_created_at: Create at
+  field_big_thing_title: Name
+  field_big_thing_description: Description

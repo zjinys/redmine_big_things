@@ -1,0 +1,43 @@
+<div class="contextual">
+  <%= link_to l(:label_big_thing_new), {:controller => 'big_things', :action => 'new', :project_id => @project.id}, :class => 'icon icon-add' %>
+</div>
+
+<h2><%= l(:label_big_things_list) %></h2>
+
+
+<% unless @big_things.empty? %>
+<table class="list files">
+  <thead><tr>
+    <th><%= l(:field_id) %></th>
+    <th><%= l(:field_big_thing_name)%></th>
+    <th><%= l(:field_big_thing_start_date)%></th>
+    <th><%= l(:field_big_thing_finish_date)%></th>
+    <th><%= l(:field_big_thing_created_at)%></th>
+    <th><%= l(:field_create_by)%></th>
+  </tr></thead>
+  <tbody>
+<% @big_things.each do |big_thing| %>
+  <tr class="file <%= cycle("odd", "even") %>">
+    <td class="id"><%= big_thing.id%></td>
+    <td class="subject">
+        <%= link_to h(big_thing.name), :controller => 'big_things', :action => 'show', :id => big_thing.id ,:project_id => @project.id%>
+    </td>
+    
+    <td class="module">
+      <%= format_date(big_thing.start_date) %>
+    </td>
+    <td class="status">
+      <%= format_date(big_thing.finish_date) %>
+    </td>
+    <td class="status">
+      <%= format_date(big_thing.created_at) %>
+    </td>
+    <td class="author"><%= big_thing.author %></td>
+  </tr>
+  <% end%>
+  </tbody>
+</table>
+<p class="pagination"><%= pagination_links_full @big_thing_pages %></p>
+<% else %>
+  <p class="nodata"><%=l(:label_no_data)%></p>
+<% end %>

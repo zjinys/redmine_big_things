@@ -1,0 +1,17 @@
+<%= error_messages_for 'testcases' %>
+
+<div class="box">
+  <p>
+    <%= f.text_field 'name', :label=>l(:field_big_thing_title),:size=>60 -%>
+  </p>
+  <p>
+    <%= f.date_select 'start_date', :label=>l(:field_big_thing_start_date) -%>
+  </p>
+  <p>
+    <%= f.date_select 'finish_date', :label=>l(:field_big_thing_finish_date) -%>
+  </p>
+  <p>
+    <%= f.text_area 'description', :label=>l(:field_big_thing_description), :rows => 10,:cols=>80 -%>
+  </p>
+  
+</div>

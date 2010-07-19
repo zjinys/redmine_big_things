@@ -1,0 +1,13 @@
+<div class="contextual">
+  <%= link_to l(:label_big_thing_new), {:controller => 'big_things', :action => 'new', :project_id => @project.id},
+              :class => 'icon icon-add'%>
+</div>
+
+<h2><%= l(:label_big_thing_new) %></h2>
+
+<% labelled_tabular_form_for :big_thing, @big_things,
+                             :url =>{:action => 'new', :project_id => @project}  do |f|  %>
+  <%= render :partial => 'form', :locals => {:f => f}  %>
+
+  <%= submit_tag l(:button_save) -%>
+<% end -%>
